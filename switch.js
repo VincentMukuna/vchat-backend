@@ -4,10 +4,10 @@ import { addToGlobalChat } from "./groups.js";
 export async function appSwitch({ req, res, log }) {
 	let status = { ok: false, message: "no action" };
 
-	log(JSON.stringify(req));
+	log(req.body.action);
 
 	try {
-		let payload = JSON.parse(req.body);
+		let payload = req.body;
 		log("payload " + payload);
 		if (payload.action === "secure chatdoc") {
 			status = await secureChatDoc(payload.params);
