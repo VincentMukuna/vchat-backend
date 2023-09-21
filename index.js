@@ -4,9 +4,6 @@ import userActions from "./user";
 import groupActions from "./groups";
 
 module.exports = async function ({ req, res, log }) {
-	log("Started");
-	log(req.body);
-
 	let status = { ok: false, message: "no action" };
 
 	try {
@@ -31,6 +28,8 @@ module.exports = async function ({ req, res, log }) {
 		console.error(error);
 		status = { ok: false, message: "An error occurred " + error.message };
 	}
+
+	log(status);
 
 	return res.json(status);
 };
