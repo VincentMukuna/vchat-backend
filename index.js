@@ -3,11 +3,13 @@ const userActions = require("./user");
 const chatActions = require("./chats");
 const groupActions = require("./groups");
 
-module.exports = async function (req, res) {
+module.exports = async function ({ req, res }, log) {
+	log("Started");
+	log(JSON.parse(req));
 	let status = { ok: false, message: "no action" };
 
 	try {
-		let payload = JSON.parse(req.payload);
+		let payload = JSON.parse(req.body);
 		if (payload.action === "secure chatdoc") {
 			status = await chatActions.secureChatDoc(payload.params);
 		} else if (payload.action === "add contact") {
