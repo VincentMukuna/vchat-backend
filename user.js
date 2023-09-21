@@ -9,12 +9,6 @@ export { addContact, deleteContact, deleteUser };
 const { database: db, users: user } = api.provider();
 
 async function addContact({ adderDetailsID, addeeDetailsID }) {
-	if (
-		typeof adderDetailsID !== "string" ||
-		typeof addeeDetailsID !== "string"
-	) {
-		return { ok: false, message: "Invalid arguments!" };
-	}
 	try {
 		//get current contact details
 		let adderDetails = await db.getDocument(
@@ -42,7 +36,7 @@ async function addContact({ adderDetailsID, addeeDetailsID }) {
 		if (adderContactList.has(addeeDetailsID)) {
 			return { ok: false, message: "contact exist in your list" };
 		}
-		if (addeeContactList.has(addeeDetailsID)) {
+		if (addeeContactList.has(adderDetailsID)) {
 			return { ok: false, message: "contact exist in their list" };
 		}
 		//create chat
