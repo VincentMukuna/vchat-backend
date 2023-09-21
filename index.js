@@ -5,7 +5,7 @@ const groupActions = require("./groups");
 
 module.exports = async function ({ req, res, log }) {
 	log("Started");
-	log(JSON.parse(req));
+	log(req);
 	let status = { ok: false, message: "no action" };
 
 	try {
