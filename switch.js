@@ -3,8 +3,9 @@ import { secureChatDoc, clearChatMessages } from "./chats.js";
 import { addToGlobalChat } from "./groups.js";
 export async function appSwitch({ req, res, log }) {
 	let status = { ok: false, message: "no action" };
+	log("Body: ", req.body || req.bodyRaw);
 
-	log(JSON.parse(req.body).action);
+	log(JSON.stringify(req.body));
 
 	try {
 		let payload = JSON.parse(req.body);
