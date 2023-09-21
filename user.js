@@ -1,10 +1,10 @@
 //@ts-check
 import { Permission, Role, ID } from "node-appwrite";
-import { Server } from "./config";
-import chatActions from "./chats";
-import api from "./api";
+import { Server } from "./config.js";
+import * as chatActions from "./chats.js";
+import api from "./api.js";
 
-export default { addContact, deleteContact, deleteUser };
+export { addContact, deleteContact, deleteUser };
 
 const { database: db, users: user } = api.provider();
 

@@ -1,5 +1,5 @@
 import { Databases, Users, Client, Storage } from "node-appwrite";
-import Server from "./config";
+import { Server } from "./config.js";
 
 /**
  * @typedef {Object} SDKType

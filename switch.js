@@ -1,6 +1,6 @@
-import { addContact, deleteContact, deleteUser } from "./user";
-import { secureChatDoc, clearChatMessages } from "./chats";
-import { addToGlobalChat } from "./groups";
+import { addContact, deleteContact, deleteUser } from "./user.js";
+import { secureChatDoc, clearChatMessages } from "./chats.js";
+import { addToGlobalChat } from "./groups.js";
 export async function appSwitch({ req, res, log }) {
 	let status = { ok: false, message: "no action" };
 

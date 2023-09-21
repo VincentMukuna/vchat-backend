@@ -1,6 +1,6 @@
 //@ts-check
-import { Server } from "./config";
-import api from "./api";
+import { Server } from "./config.js";
+import api from "./api.js";
 const db = api.provider().database;
 
 async function addToGlobalChat({ userDetailsID }) {
@@ -69,4 +69,4 @@ async function deleteGroup({ groupID, deleterDetailsID }) {
 async function removeMember({ groupID, removerDetailsID, removedDetailsID }) {}
 async function addMember({ groupID, adderDetailsID, addeeDetailsID }) {}
 
-export default { addToGlobalChat, deleteGroup, removeMember, addMember };
+export { addToGlobalChat, deleteGroup, removeMember, addMember };
