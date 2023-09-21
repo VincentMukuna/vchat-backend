@@ -9,6 +9,12 @@ export default { addContact, deleteContact, deleteUser };
 const { database: db, users: user } = api.provider();
 
 async function addContact({ adderDetailsID, addeeDetailsID }) {
+	if (
+		typeof adderDetailsID !== "string" ||
+		typeof addeeDetailsID !== "string"
+	) {
+		return { ok: false, message: "Invalid arguments!" };
+	}
 	try {
 		//get current contact details
 		let adderDetails = await db.getDocument(
