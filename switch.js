@@ -14,7 +14,7 @@ export async function appSwitch({ req, res, log }) {
 			status = await deleteContact(payload.params);
 		} else if (payload.action === "delete message") {
 			status = await deleteContact(payload.params);
-		} else if (payload.action === "clear messages") {
+		} else if (payload.action === "clear chat messages") {
 			status = await clearChatMessages(payload.params);
 		} else if (payload.action === "add to global chat") {
 			status = await addToGlobalChat(payload.params);
