@@ -3,7 +3,7 @@ const userActions = require("./user");
 const chatActions = require("./chats");
 const groupActions = require("./groups");
 
-module.exports = async function ({ req, res }, log) {
+module.exports = async function ({ req, res, log }) {
 	log("Started");
 	log(JSON.parse(req));
 	let status = { ok: false, message: "no action" };
