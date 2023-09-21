@@ -53,7 +53,7 @@ async function clearChatMessages({ chatID }) {
 			Server.databaseID,
 			Server.collectionIDChats,
 			chatID,
-			{ changeLog: "clearmessages" }
+			{ changeLog: "clear" }
 		);
 		return { ok: true, message: "Delete operation complete" };
 	} catch (error) {
