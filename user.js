@@ -36,7 +36,7 @@ async function addContact({ adderDetailsID, addeeDetailsID }) {
 		if (adderContactList.has(addeeDetailsID)) {
 			return { ok: false, message: "contact exist in your list" };
 		}
-		if (addeeContactList.has(addeeDetailsID)) {
+		if (addeeContactList.has(adderDetailsID)) {
 			return { ok: false, message: "contact exist in their list" };
 		}
 		//create chat
