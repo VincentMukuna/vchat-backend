@@ -7,7 +7,7 @@ export async function appSwitch({ req, res, log }) {
 	log(req.body?.action);
 
 	try {
-		let payload = req.body;
+		let payload = JSON.parse(req.body);
 		log("payload " + payload);
 		if (payload.action === "secure chatdoc") {
 			status = await secureChatDoc(payload.params);
