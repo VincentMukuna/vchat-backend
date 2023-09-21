@@ -1,7 +1,7 @@
 //@ts-check
-const userActions = require("./user");
-const chatActions = require("./chats");
-const groupActions = require("./groups");
+import chatActions from "./chats";
+import userActions from "./user";
+import groupActions from "./groups";
 
 module.exports = async function ({ req, res, log }) {
 	log("Started");
