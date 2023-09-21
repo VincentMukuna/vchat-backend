@@ -4,7 +4,7 @@ import { addToGlobalChat } from "./groups.js";
 export async function appSwitch({ req, res, log }) {
 	let status = { ok: false, message: "no action" };
 
-	log(req.body.action);
+	log(JSON.parse(req.body).action);
 
 	try {
 		let payload = JSON.parse(req.body);
