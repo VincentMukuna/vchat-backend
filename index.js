@@ -32,5 +32,5 @@ module.exports = async function ({ req, res, log }) {
 		status = { ok: false, message: "An error occurred " + error.message };
 	}
 
-	res.json(status);
+	return res.json(status);
 };
