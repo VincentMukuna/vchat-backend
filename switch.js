@@ -1,11 +1,11 @@
 import { addContact, deleteContact, deleteUser } from "./user";
 import { secureChatDoc, clearChatMessages } from "./chats";
 import { addToGlobalChat } from "./groups";
-export default async function (req, res) {
+export async function appSwitch({ req, res, log }) {
 	let status = { ok: false, message: "no action" };
 
 	try {
-		let payload = JSON.parse(req.payload);
+		let payload = req.body;
 		if (payload.action === "secure chatdoc") {
 			status = await secureChatDoc(payload.params);
 		} else if (payload.action === "add contact") {
@@ -27,5 +27,7 @@ export default async function (req, res) {
 		status = { ok: false, message: "An error occurred " + error.message };
 	}
 
-	res.json(status);
+	log(status);
+
+	return res.json(status);
 }
