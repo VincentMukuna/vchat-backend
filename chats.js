@@ -49,6 +49,12 @@ async function clearChatMessages({ chatID }) {
 				errors.push(`Error deleting message ${i}\n.${error.message}`);
 			}
 		});
+		await db.updateDocument(
+			Server.databaseID,
+			Server.collectionIDChats,
+			chatID,
+			{ changeLog: "clearmessages" }
+		);
 		return { ok: true, message: "Delete operation complete" };
 	} catch (error) {
 		return {
