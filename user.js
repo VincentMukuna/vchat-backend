@@ -1,11 +1,12 @@
 //@ts-check
+import { Permission, Role, ID } from "node-appwrite";
+import { Server } from "./config";
+import chatActions from "./chats";
+import api from "./api";
 
-const { Permission, Role, ID, Databases, Users } = require("node-appwrite");
-const Server = require("./config");
-const chatActions = require("./chats");
-const api = require("./api");
+export default { addContact, deleteContact, deleteUser };
+
 const { database: db, users: user } = api.provider();
-module.exports = { addContact, deleteContact, deleteUser };
 
 async function addContact({ adderDetailsID, addeeDetailsID }) {
 	try {

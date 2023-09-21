@@ -1,5 +1,5 @@
 //@ts-check
-let Server = {
+export const Server = {
 	endpoint: "https://cloud.appwrite.io/v1",
 	projectID: "64cced226fa211528fbf",
 	databaseID: "64ccf0b9c1d51c33f904",
@@ -12,5 +12,3 @@ let Server = {
 	bucketIDAttachments: "64d2846c6ba20730422c",
 	documentIDGlobalChat: "650053648227be1533ad",
 };
-
-module.exports = Server;

@@ -1,11 +1,11 @@
 //@ts-check
-const { Permission, Role, Query } = require("node-appwrite");
+import { Permission, Role, Query } from "node-appwrite";
 
-const Server = require("./config");
-const api = require("./api");
+import { Server } from "./config";
+import api from "./api";
 const db = api.provider().database;
 
-module.exports = { clearChatMessages, secureChatDoc };
+export default { clearChatMessages, secureChatDoc };
 
 async function secureChatDoc({ docID, senderID, recepientID }) {
 	const updatedPermissions = [
