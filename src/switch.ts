@@ -1,4 +1,5 @@
 import { clearChatMessages } from "./chats.js";
+import { deleteUser } from "./user.js";
 export interface IStatus {
 	ok: boolean;
 	message: string;
@@ -11,6 +12,8 @@ export async function appSwitch({ req, res, log }: any) {
 
 		if (payload.action === "clear chat messages") {
 			status = await clearChatMessages(payload.params);
+		} else if (payload.action === "delete user") {
+			status = await deleteUser(payload.params);
 		}
 	} catch (error: any) {
 		// Handle any potential errors here
