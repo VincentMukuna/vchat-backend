@@ -22,33 +22,25 @@ export interface IChat extends Models.Document {
 		| "created";
 }
 
-export async function clearChatMessages({ chatId }: { chatId: string }) {
-	return {
-		ok: false,
-		message: `API key: ${process.env.APPWRITE_API_KEY}  chatID: ${chatId}`,
-	};
-	// 	try {
-	// 		let chatDoc = (await db.getDocument(
-	// 			Server.databaseID,
-	// 			Server.collectionIDChats,
-	// 			chatId
-	// 		)) as IChat;
-	// 		return { ok: false, message: JSON.stringify(chatDoc) };
+export async function clearChatMessages({ chatID }: { chatID: string }) {
+	try {
+		let chatDoc = (await db.getDocument(
+			Server.databaseID,
+			Server.collectionIDChats,
+			chatID
+		)) as IChat;
 
-	// 		// chatDoc.chatMessages?.forEach(async (chat) => {
-	// 		// 	try {
-	// 		// 		await db.deleteDocument(
-	// 		// 			Server.databaseID,
-	// 		// 			Server.collectionIDChatMessages,
-	// 		// 			chat.$id
-	// 		// 		);
-	// 		// 	} catch (error) {}
-	// 		// });
-	// 		// return { ok: true, message: "cleared chat messages" };
-	// 	} catch (error: any) {
-	// 		return {
-	// 			ok: false,
-	// 			message: "Error getting chat doc" + JSON.stringify(error),
-	// 		};
-	// 	}
+		chatDoc.chatMessages?.forEach(async (chat) => {
+			try {
+				await db.deleteDocument(
+					Server.databaseID,
+					Server.collectionIDChatMessages,
+					chat.$id
+				);
+			} catch (error) {}
+		});
+		return { ok: true, message: "cleared chat messages" };
+	} catch (error) {
+		return { ok: false, message: "Error getting chat doc" };
+	}
 }
