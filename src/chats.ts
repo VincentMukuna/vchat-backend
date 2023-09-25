@@ -29,17 +29,18 @@ export async function clearChatMessages({ chatId }: { chatId: string }) {
 			Server.collectionIDChats,
 			chatId
 		)) as IChat;
+		return { ok: false, message: JSON.stringify(chatDoc) };
 
-		chatDoc.chatMessages?.forEach(async (chat) => {
-			try {
-				await db.deleteDocument(
-					Server.databaseID,
-					Server.collectionIDChatMessages,
-					chat.$id
-				);
-			} catch (error) {}
-		});
-		return { ok: true, message: "cleared chat messages" };
+		// chatDoc.chatMessages?.forEach(async (chat) => {
+		// 	try {
+		// 		await db.deleteDocument(
+		// 			Server.databaseID,
+		// 			Server.collectionIDChatMessages,
+		// 			chat.$id
+		// 		);
+		// 	} catch (error) {}
+		// });
+		// return { ok: true, message: "cleared chat messages" };
 	} catch (error) {
 		return { ok: false, message: "Error getting chat doc" };
 	}
