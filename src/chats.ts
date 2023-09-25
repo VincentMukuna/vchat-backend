@@ -42,6 +42,9 @@ export async function clearChatMessages({ chatId }: { chatId: string }) {
 		// });
 		// return { ok: true, message: "cleared chat messages" };
 	} catch (error: any) {
-		return { ok: false, message: "Error getting chat doc" + error.mesage };
+		return {
+			ok: false,
+			message: "Error getting chat doc" + JSON.stringify(error),
+		};
 	}
 }
