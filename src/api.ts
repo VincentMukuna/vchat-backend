@@ -1,5 +1,5 @@
 import { Databases, Users, Client, Storage } from "node-appwrite";
-import { Server } from "./config.js";
+import { SERVER } from "./config.js";
 
 let api = {
 	sdk: null as null | {
@@ -16,8 +16,8 @@ let api = {
 
 		const appwrite = new Client();
 		appwrite
-			.setEndpoint(Server.endpoint)
-			.setProject(Server.projectID)
+			.setENDPOINT(SERVER.ENDPOINT)
+			.setProject(SERVER.PROJECT_ID)
 			.setKey(process.env.APPWRITE_API_KEY as string);
 		const users = new Users(appwrite);
 		const database = new Databases(appwrite);

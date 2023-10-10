@@ -1,5 +1,5 @@
 import api from "./api.js";
-import { Server } from "./config.js";
+import { SERVER } from "./config.js";
 
 const { users, database } = api.provider();
 export async function deleteUser({ userID }: { userID: string }) {
@@ -7,8 +7,8 @@ export async function deleteUser({ userID }: { userID: string }) {
 		let prefs: any = await users.getPrefs(userID);
 		if (prefs.detailsDocID) {
 			database.deleteDocument(
-				Server.databaseID,
-				Server.collectionIDUsers,
+				SERVER.DATABASE_ID,
+				SERVER.COLLECTION_ID_USERS,
 				prefs.detailsDocID
 			);
 		}

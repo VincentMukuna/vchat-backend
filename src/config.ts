@@ -1,14 +1,13 @@
 //@ts-check
-export const Server = {
-	endpoint: "https://cloud.appwrite.io/v1",
-	projectID: "64cced226fa211528fbf",
-	databaseID: "production",
-	collectionIDChatMessages: "chat-messages",
-	collectionIDChats: "chats",
-	collectionIDUsers: "user-details",
-	collectionIDGroups: "groups",
-	collectionIDGroupMessages: "group-messages",
-	bucketIDAvatars: "user-avatars",
-	bucketIDAttachments: "chat-message-attachments",
-	documentIDGlobalChat: "global-chat",
+export const SERVER = {
+	ENDPOINT: "https://cloud.appwrite.io/v1",
+	PROJECT_ID: "64cced226fa211528fbf",
+	DATABASE_ID: "production",
+	COLLECTION_ID_CHAT_MESSAGES: "chat-messages",
+	COLLECTION_ID_CHATS: "chats",
+	COLLECTION_ID_USERS: "user-details",
+	COLLECTION_ID_GROUPS: "groups",
+	COLLECTION_ID_GROUP_MESSAGES: "group-messages",
+	BUCKET_ID_USER_AVATARS: "user-avatars",
+	BUCKET_ID_CHAT_ATTACHMENTS: "chat-message-attachments",
 };
