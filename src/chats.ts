@@ -28,7 +28,7 @@ export async function clearChatMessages({ chatID }: { chatID: string }) {
 		const { documents } = await db.listDocuments(
 			SERVER.DATABASE_ID,
 			SERVER.COLLECTION_ID_CHAT_MESSAGES,
-			[Query.equal("group", chatID), Query.limit(0)]
+			[Query.equal("chat", chatID), Query.limit(0)]
 		);
 
 		let messages = documents as IChatMessage[];
