@@ -16,7 +16,7 @@ let api = {
 
 		const appwrite = new Client();
 		appwrite
-			.setENDPOINT(SERVER.ENDPOINT)
+			.setEndpoint(SERVER.ENDPOINT)
 			.setProject(SERVER.PROJECT_ID)
 			.setKey(process.env.APPWRITE_API_KEY as string);
 		const users = new Users(appwrite);
