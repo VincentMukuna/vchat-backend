@@ -25,12 +25,6 @@ export interface IChat extends Models.Document {
 
 export async function clearChatMessages({ chatID }: { chatID: string }) {
 	try {
-		let chatDoc = (await db.getDocument(
-			SERVER.DATABASE_ID,
-			SERVER.COLLECTION_ID_CHATS,
-			chatID
-		)) as IChat;
-
 		const { documents } = await db.listDocuments(
 			SERVER.DATABASE_ID,
 			SERVER.COLLECTION_ID_CHAT_MESSAGES,
@@ -52,15 +46,12 @@ export async function clearChatMessages({ chatID }: { chatID: string }) {
 			}
 		});
 
-		chatDoc.chatMessages?.forEach(async (chat) => {
-			try {
-				await db.deleteDocument(
-					SERVER.DATABASE_ID,
-					SERVER.COLLECTION_ID_CHAT_MESSAGES,
-					chat.$id
-				);
-			} catch (error) {}
-		});
+		await db.updateDocument(
+			SERVER.DATABASE_ID,
+			SERVER.COLLECTION_ID_CHATS,
+			chatID,
+			{ chatMessages: [] }
+		);
 
 		return { ok: true, message: "cleared chat messages" };
 	} catch (error) {
